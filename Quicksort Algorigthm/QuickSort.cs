@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Quicksort_Algorigthm
 {
     class QuickSort
     {
+/*---------------------------------------------------------
+* Method: QuickSortAlgo
+* Description: Creates L, E, and G queues. In this case,
+* the L queue will hold numbes smaller than the current 
+* partition point, E will hold numbers equal to the partition
+* point, and R will hold numbers greater to the partition point. 
+* Calls each method in the class QuickSort
+* -------------------------------------------------------*/
         public void QuickSortAlgo(ref Queue<int> S, int p)
         {
             if (S.Count > 1)
@@ -23,6 +29,13 @@ namespace Quicksort_Algorigthm
                 S = mergeQueues(ref L, ref E, ref G);
             }
         }
+
+/*---------------------------------------------------------
+* Method: partition
+* Description: Dequeues an element from the given queue
+* and compares it to the partition point. Depending on the
+* result, the number could be added to the L, E, or G queues.
+* -------------------------------------------------------*/
         static void partition(Queue<int> S, int p, ref Queue<int> L, ref Queue<int> E, ref Queue<int> G)
         {
             while (S.Count != 0)
@@ -41,6 +54,10 @@ namespace Quicksort_Algorigthm
             }
         }
 
+/*---------------------------------------------------------
+* Method: mergeQueues
+* Description: Merges all queues into a new queue
+* -------------------------------------------------------*/
         static Queue<int> mergeQueues(ref Queue<int> L, ref Queue<int> E, ref Queue<int> G)
         {
             Queue<int> newQ = new Queue<int>();
@@ -59,6 +76,10 @@ namespace Quicksort_Algorigthm
             return newQ;
         }
 
+/*---------------------------------------------------------
+* Method: findP
+* Description: finds the parition point
+* -------------------------------------------------------*/
         static int findP(Queue<int> S)
         {
             if (S.Count > 1)
